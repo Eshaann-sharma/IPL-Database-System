@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams</title>
+</head>
+<body>
+    <header>
+        <h1>IPL DATABASE</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/teams">Teams</a></li>
+            <li><a href="/players">Players</a></li>
+            <li><a href="/matches">Matches</a></li>
+            <li><a href="/Stadium">Stadiums</a></li>
+        </ul>
+    </nav>
+    <h2>Teams</h2>
+    <table>
+        <tr>
+            <th>Team ID</th>
+            <th>Team Name</th>
+            <!-- Add more columns as per your database schema -->
+        </tr>
+        {% for team in teams %}
+        <tr>
+            <td>{{ team[0] }}</td>
+            <td>{{ team[1] }}</td>
+            <!-- Add more columns as per your database schema -->
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

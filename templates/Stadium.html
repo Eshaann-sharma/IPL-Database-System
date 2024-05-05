@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stadium</title>
+</head>
+<body>
+    <header>
+        <h1>IPL DATABASE</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/teams">Teams</a></li>
+            <li><a href="/players">Players</a></li>
+            <li><a href="/matches">Matches</a></li>
+            <li><a href="/Stadium">Stadium</a></li>
+        </ul>
+    </nav>
+    <h2>Stadiums</h2>
+    <table>
+        <tr>
+            <th>Stadium Name</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Capacity</th>
+            <th>Rent Amount</th>
+        </tr>
+        {% for stadium in stadiums %}
+        <tr>
+            <td>{{ stadium[0] }}</td>
+            <td>{{ stadium[1] }}</td>
+            <td>{{ stadium[2] }}</td>
+            <td>{{ stadium[3] }}</td>
+            <td>{{ stadium[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

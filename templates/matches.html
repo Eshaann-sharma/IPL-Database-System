@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches</title>
+</head>
+<body>
+    <header>
+        <h1>IPL DATABASE</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/teams">Teams</a></li>
+            <li><a href="/players">Players</a></li>
+            <li><a href="/matches">Matches</a></li>
+            <li><a href="/Stadium">Stadiums</a></li>
+        </ul>
+    </nav>
+    <h2>Matches</h2>
+    <table>
+        <tr>
+            <th>Match ID</th>
+            <th>Team 1</th>
+            <th>Team 2</th>
+            <!-- Add more columns as per your database schema -->
+        </tr>
+        {% for match in matches %}
+        <tr>
+            <td>{{ match[0] }}</td>
+            <td>{{ match[1] }}</td>
+            <td>{{ match[2] }}</td>
+            <!-- Add more columns as per your database schema -->
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
