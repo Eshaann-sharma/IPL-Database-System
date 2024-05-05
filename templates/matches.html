@@ -6,74 +6,165 @@
     <title>Matches</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            text-align: center;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        nav ul li {
-            display: inline;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.container {
+    width: 100%;
+    padding: 0 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+}
+
+.text-3xl {
+    font-size: 2rem;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Navigation links */
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Header */
+header {
+    background-color: #092960;
+}
+
+/* Main */
+main {
+    min-height: calc(100vh - 300px); /* Adjust as needed */
+}
+
+/* Footer */
+footer {
+    padding-top: 40px;
+    background-color: #092960;
+}
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+    .container {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .text-2xl {
+        font-size: 1.25rem;
+    }
+
+    .text-3xl {
+        font-size: 1.5rem;
+    }
+}
+
+form {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
             margin-right: 20px;
         }
-        nav ul li a {
-            color: #333;
-            text-decoration: none;
-            padding: 10px;
-            transition: background-color 0.3s;
-        }
-        nav ul li a:hover {
-            background-color: #ddd;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            text-align: center;
-            position: fixed;
+        table {
+            border-collapse: collapse;
             width: 100%;
-            bottom: 0;
-            left: 0;
         }
+
+        th, td {
+            border: 1px solid #ddd; /* Thin border */
+            padding: 8px;
+            text-align: center;
+        }
+
+        /* Style the first row (header) */
+        th {
+            background-color: #f2f2f2; /* Gray background */
+            color: #333; /* Dark gray text */
+        }
+
+        /* Style alternating rows */
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Gray background */
+        }
+
     </style>
 </head>
 <body>
-    <header>
-        <h1>IPL DATABASE</h1>
+    <header class="bg-gray-900 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-white mb-4 lg:mb-0 text-center"><a href="/" class="text-white nav-link">IPL Database</a></h1>
+            <nav class="space-x-4">
+                <a href="/teams" class="nav-link">Teams</a>
+                <a href="/Stadium" class="nav-link">Stadium</a>
+                <a href="/players" class="nav-link">Players</a>
+                <a href="/matches" class="nav-link">Matches</a>
+                <a href="/teamdetails" class="nav-link">Team Details</a>
+            </nav>
+        </div>
     </header>
-    <nav>
-        <ul>
-            <li><a href="/teams">Teams</a></li>
-            <li><a href="/players">Players</a></li>
-            <li><a href="/matches">Matches</a></li>
-            <li><a href="/Stadium">Stadiums</a></li>
-        </ul>
-    </nav>
-    <h2>Matches</h2>
-    <table>
+    <h2 class="font-size: 3rem text-gray margin-bottom: 20px text-center">Matches</h2>
+    <div class="container padding-right:20px">
+        <form method="POST" action="/matches">
+            <select name="column">
+                <option value="MatchType">Match Type</option>
+                <option value="StadiumName">Stadium Name</option>
+                <option value="City">City</option>
+            </select>
+            <input type="text" name="search" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    
+    <table class="container mx-auto">
         <tr>
-            <th>Match ID</th>
-            <th>Team 1</th>
-            <th>Team 2</th>
+            <th style="text-align: center; padding-bottom: 16px;">Match ID</th>
+            <th style="text-align: center; padding-bottom: 16px;">Match Type</th>
+            <th style="text-align: center; padding-bottom: 16px;">Match Date</th>
+            <th style="text-align: center; padding-bottom: 16px;">Stadium Name</th>
+            <th style="text-align: center; padding-bottom: 16px;">City</th>
             <!-- Add more columns as per your database schema -->
         </tr>
         {% for match in matches %}
         <tr>
-            <td>{{ match[0] }}</td>
-            <td>{{ match[1] }}</td>
-            <td>{{ match[2] }}</td>
+            <td style="text-align: center;">{{ match[0] }}</td>
+            <td style="text-align: center;">{{ match[1] }}</td>
+            <td style="text-align: center;">{{ match[2] }}</td>
+            <td style="text-align: center;">{{ match[3] }}</td>
+            <td style="text-align: center;">{{ match[4] }}</td>
             <!-- Add more columns as per your database schema -->
         </tr>
         {% endfor %}
